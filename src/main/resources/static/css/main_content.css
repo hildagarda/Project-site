@@ -1,0 +1,48 @@
+*{
+    padding: 0;margin: 0;
+}
+
+
+
+#imgs {
+    display: flex;
+    justify-content: center;
+    padding-top: 3%;
+}
+#imgs img{
+    margin-inline: 5px;
+}
+
+.main {
+    margin-top: 40px;
+    width: 50%;
+    margin-left: 10%;
+    background: #F8F8F8;
+    border: 0.1px solid #E8E8E8;
+    padding: 2%;
+    float: left;
+}
+.main h2 {
+    text-align: center;
+}
+
+.aside {
+    margin-top: 40px;
+    width: 20%;
+    padding: 20px 2.5%;
+    margin-left: 5%;
+    background: #F8F8F8;
+    border: 0.1px solid #E8E8E8;
+    float: left;
+    position: relative;
+}
+
+
+
+
+
+
+
+
+
+

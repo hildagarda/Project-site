@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="fragments::html_head">
+
+</head>
+<body>
+
+<header>
+
+    <nav class="navbar navbar-expand-lg bg-success">
+        <div class="container-fluid">
+            <a class="navbar-brand" th:href="@{/}">ABU</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Переключатель навигации">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li>
+                        <a class="nav-link" href="#">Ссылка</a>
+                    </li>
+                    <li>
+                        <a class="nav-link" href="#">Ссылка</a>
+                    </li>
+                    <li>
+                        <a class="nav-link" href="#">Ссылка</a>
+                    </li>
+                </ul>
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Поиск аниме..." aria-label="Поиск">
+                    <button class="btn btn-outline-light" type="submit">Поиск</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+</header>
+
+<section>
+
+    <div class="container text-center">
+        <div class="row">
+            <div class="col">
+                <br>
+
+                <div class="alert alert-light" role="alert">
+                    <div>
+                        <a class="btn btn-success my-btn" th:href="@{films}" role="button">Фильмы</a>
+                        <a class="btn btn-success my-btn" th:href="@{serials}" role="button">Сериалы</a>
+                        <a class="btn btn-success my-btn" th:href="@{anime}" role="button">Аниме</a>
+                        <a class="btn btn-success my-btn" th:href="@{books}" role="button">Книги</a>
+                    </div>
+                </div>
+
+                <br>
+                <h2> Что такое Аниме? </h2>
+                <p> Аниме – это особый стиль мультфильма, созданный или вдохновленный японской анимацией. Это рисованная
+                    или компьютерная форма искусства, фантастический мир, в котором есть персонажи с яркими прическами,
+                    большими глазами в сочетании с особым чувством моды. Все аниме-шоу – это мультфильмы, но не все
+                    мультфильмы являются аниме. Художественный стиль, связанный с аниме, очень уникален и узнаваем. </p>
+
+
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-12">
+                <div class="alert alert-success" role="alert">
+                    Создай свой персональный топ любимых Аниме тайтлов!
+                </div>
+
+            </div>
+
+        </div>
+        <br>
+        <br>
+        <div class="row">
+            <div class="col-8">
+
+
+                <!-- Кнопка-триггер модального окна -->
+                <div class="float-end">
+                    <button type="button" class="btn btn-success" onclick="create()"
+                            data-bs-toggle="tooltip" data-bs-placement="top" title="Add">
+                        <span class="btn-label"><i class="fa fa-plus"></i></span> &nbsp;Add
+                    </button>
+                </div>
+
+                <!-- Модальное окно -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                     aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <!-- ФОРМА СОЗДАНИЯ ФИЛЬМА -->
+                            <form id="uploadFiles" name="uploadFiles" action="/accept_quiz_answer" method="POST"
+                                  enctype="multipart/form-data">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Создай свой персональный рейтинг</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Закрыть"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <!-- img -->
+                                    <div class="mb-3">
+                                        <img src="img/death note.jpg" class="form-control" id="anime-img1" alt="...">
+                                    </div>
+
+                                    <!-- 1 -->
+                                    <div class="mb-3">
+                                        <button type="submit" class="form-control" name="quiz" value="1" >Death Note</button>
+                                    </div>
+
+                                    <!-- 2 -->
+                                    <div class="mb-3">
+                                        <button type="submit" class="form-control" name="quiz" value="2">Code Geass</button>
+                                    </div>
+
+                                    <!-- 3 -->
+                                    <div class="mb-3">
+                                        <button type="submit" class="form-control" name="quiz" value="3">One Piece</button>
+                                    </div>
+
+                                    <!-- 4 -->
+                                    <div class="mb-3">
+                                        <button type="submit" class="form-control" name="quiz" value="4">Spongebob Squarepants</button>
+                                    </div>
+
+
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn btn-primary">Сохранить изменения</button>
+                                </div>
+                            </form>
+                            <!-- ОКОНЧАНИЕ ФОРМЫ СОЗДАНИЯ ФИЛЬМА -->
+
+                        </div>
+
+                    </div>
+                </div>
+                <br>
+
+
+            </div>
+            <div class="col-4">col-4</div>
+        </div>
+    </div>
+
+
+</section>
+
+
+<div th:replace="fragments::bootstrap_js"></div>
+<script src="/js/anime.js"></script>
+</body>
+</html>

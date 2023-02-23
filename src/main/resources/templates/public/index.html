@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ABOUT YOU</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link th:href="@{css/style.css}" rel="stylesheet" type="text/css">
+
+
+</head>
+<body>
+
+<header>
+
+    <nav class="navbar navbar-expand-lg bg-success">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/"> <img src="img/logo.jpg"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Переключатель навигации">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li>
+                        <a class="nav-link" href="#">Ссылка</a>
+                    </li>
+                    <li>
+                        <a class="nav-link" href="#">Ссылка</a>
+                    </li>
+                    <li>
+                        <a class="nav-link" href="#">Ссылка</a>
+                    </li>
+                </ul>
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Поиск аниме..." aria-label="Поиск">
+                    <button class="btn btn-outline-light" type="submit">Поиск</button>
+                    <a class="btn btn-outline-light my-btn" th:href="@{../admin}" role="button">Админ</a>
+                </form>
+
+                <!--  <a class="btn btn-danger my-btn" th:href="@{../admin}" role="button">Админ</a> -->
+            </div>
+        </div>
+    </nav>
+
+</header>
+
+<section>
+
+    <div class="container text-center">
+        <div class="row">
+            <div class="col">
+                <br>
+                <h2> Что такое Аниме? </h2>
+                <p> Аниме – это особый стиль мультфильма, созданный или вдохновленный японской анимацией. Это рисованная
+                    или компьютерная форма искусства, фантастический мир, в котором есть персонажи с яркими прическами,
+                    большими глазами в сочетании с особым чувством моды. Все аниме-шоу – это мультфильмы, но не все
+                    мультфильмы являются аниме. Художественный стиль, связанный с аниме, очень уникален и узнаваем. </p>
+
+                <div class="alert alert-success" role="alert">
+                    <div>
+                        <a class="btn btn-success my-btn" th:href="@{films}" role="button">Фильмы</a>
+                        <a class="btn btn-success my-btn" th:href="@{serials}" role="button">Сериалы</a>
+                        <a class="btn btn-success my-btn" th:href="@{anime}" role="button">Аниме</a>
+                        <a class="btn btn-success my-btn" th:href="@{books}" role="button">Книги</a>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="container px-2 text-center">
+                <div class="row gx-2">
+                    <div class="col">
+                        <div class="p-2 ">
+                            <div class="card" style="width: 12rem;">
+                                <img src="img/1.jpeg" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">Заголовок карточки</h5>
+                                    <p class="card-text">Небольшой пример текстаую часть содержимого карты.</p>
+                                    <a href="#" class="btn btn-primary">Перейти куда-нибудь</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="p-2 ">
+                            <div class="card" style="width: 12rem;">
+                                <img src="img/serial.jpeg" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">Заголовок карточки</h5>
+                                    <p class="card-text">Небольшой пример текстаую часть содержимого карты.</p>
+                                    <a href="#" class="btn btn-primary">Перейти куда-нибудь</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="p-2 ">
+                            <div class="card" style="width: 12rem;">
+                                <img src="img/8.jpeg" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">Заголовок карточки</h5>
+                                    <p class="card-text">Небольшой пример текстаую часть содержимого карты.</p>
+                                    <a href="#" class="btn btn-primary">Перейти куда-нибудь</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="p-2 ">
+                            <div class="card" style="width: 12rem;">
+                                <img src="img/top gun.jpeg" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">Заголовок карточки</h5>
+                                    <p class="card-text">Небольшой пример текстаую часть содержимого карты.</p>
+                                    <a href="#" class="btn btn-primary">Перейти куда-нибудь</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="p-2 ">
+                            <div class="card" style="width: 12rem;">
+                                <img src="img/4.jpeg" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">Заголовок карточки</h5>
+                                    <p class="card-text">Небольшой пример текстаую часть содержимого карты.</p>
+                                    <a href="#" class="btn btn-primary">Перейти куда-нибудь</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="p-2 ">
+                            <div class="card" style="width: 12rem;">
+                                <img src="img/book.jpeg" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">Заголовок карточки</h5>
+                                    <p class="card-text">Небольшой пример текстаую часть содержимого карты.</p>
+                                    <a href="#" class="btn btn-primary">Перейти куда-нибудь</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="alert alert-success" role="alert">
+                    Создай свой персональный топ любимых Аниме тайтлов!
+                </div>
+
+            </div>
+
+        </div>
+        <br>
+        <br>
+        <div class="row">
+            <div class="col-8">
+
+
+                <a class="btn btn-primary" th:href="@{anime-quiz}" role="button">Создай свой вариант </a>
+
+                <br>
+
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Первый</th>
+                        <th scope="col">Последний</th>
+                        <th scope="col">Обработчик</th>
+                    </tr>
+                    </thead>
+                    <tbody class="table-group-divider">
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                        <td>@mdo</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">2</th>
+                        <td>Jacob</td>
+                        <td>Thornton</td>
+                        <td>@fat</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">3</th>
+                        <td colspan="2">Larry the Bird</td>
+                        <td>@twitter</td>
+                    </tr>
+                    </tbody>
+                </table>
+
+            </div>
+            <div class="col-4">col-4</div>
+        </div>
+    </div>
+
+</section>
+
+<div th:replace ="fragments::html_footer"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
+
+</body>
+</html>

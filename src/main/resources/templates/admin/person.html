@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ABOUT YOU</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+          integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+
+
+</head>
+<body>
+
+<header>
+
+    <nav class="navbar navbar-expand-lg bg-success">
+        <div class="container-fluid">
+            <a class="navbar-brand" th:href="@{/}">ABU</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Переключатель навигации">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li>
+                        <a class="nav-link" href="#">Ссылка</a>
+                    </li>
+                    <li>
+                        <a class="nav-link" href="#">Ссылка</a>
+                    </li>
+                    <li>
+                        <a class="nav-link" href="#">Ссылка</a>
+                    </li>
+                </ul>
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Поиск фильма..." aria-label="Поиск">
+                    <button class="btn btn-outline-light" type="submit">Поиск</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+</header>
+
+<section>
+
+    <div class="container text-center">
+        <div class="row">
+            <div class="col">
+                <br>
+
+
+                <br>
+                <h2> Доступ к персонам </h2>
+
+
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-12">
+                <div class="alert alert-success" role="alert">
+                    Создать персону
+                </div>
+
+            </div>
+
+        </div>
+        <br>
+        <br>
+        <div class="row">
+            <div class="col-8">
+
+
+                <!-- Кнопка-триггер модального окна -->
+                <div class="float-end">
+                    <button type="button" class="btn btn-success" onclick="create()"
+                            data-bs-toggle="tooltip" data-bs-placement="top" title="Add">
+                        <span class="btn-label"><i class="fa fa-plus"></i></span> &nbsp;Add
+                    </button>
+                </div>
+                <!-- Модальное окно -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                     aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+
+                            <!-- ФОРМА СОЗДАНИЯ ПЕРСОНЫ -->
+                            <form id="uploadFiles" name="uploadFiles" action="/admin/person" method="POST"
+                                  enctype="multipart/form-data">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Создай свой персональный рейтинг</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Закрыть"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <!-- id -->
+                                    <input id="id" type="hidden" name="id"/>
+
+                                    <!-- Имя -->
+                                    <div class="mb-3">
+                                        <label for="personName" class="form-label">Имя</label>
+                                        <input type="text" name="name" class="form-control" id="personName"
+                                               aria-describedby="emailHelp">
+                                    </div>
+
+                                    <!-- Фамилия -->
+                                    <div class="mb-3">
+                                        <label for="personSurname" class="form-label">Фамилия</label>
+                                        <input type="text" name="surname" class="form-control" id="personSurname"
+                                               aria-describedby="emailHelp">
+                                    </div>
+
+                                    <!-- Профессия -->
+                                    <div class="form-group mb-3">
+                                        <label for="personSurname" class="form-label">Профессия</label>
+                                        <select class="form-control" id="status" name="typeOfPerson" multiple>
+                                            <option th:value="PRODUCER" th:text="Producer"/>
+                                            <option th:value="ACTOR" th:text="Actor"/>
+                                            <option th:value="AUTHOR" th:text="Author"/>
+                                        </select>
+                                    </div>
+
+                                </div>
+
+                                <!-- Профессия
+                                <div class="mb-3">
+                                    <label for="personType" class="form-label">Профессия</label>
+                                    <input type="text" name="typeOfPerson" class="form-control" id="personType"
+                                           aria-describedby="emailHelp">
+                                </div>
+                                -->
+
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn btn-primary">Сохранить изменения</button>
+                                </div>
+                            </form>
+                            <!-- ОКОНЧАНИЕ ФОРМЫ СОЗДАНИЯ ПЕРСОНЫ -->
+
+                        </div>
+
+                    </div>
+                </div>
+                <br>
+
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Имя</th>
+                        <th scope="col">Фамилия</th>
+                        <th scope="col">Профессия</th>
+
+                    </tr>
+                    </thead>
+                    <tbody class="table-group-divider">
+                    <tr th:each="person, state : ${personList}">
+                        <th scope="row" th:text="${state.count}">number</th>
+                        <td th:text="${person.name}">Name</td>
+                        <td th:text="${person.surname}">Surname</td>
+                        <td th:text="${person.typeOfPerson}">profession</td>
+                        <td class="float-end">
+                            <button type="button" class="btn btn-primary" th:attr="onclick=|edit('${person.id}')|"
+                                    data-bs-toggle="tooltip" data-bs-placement="top" title="Edit">
+                                <span class="btn-label"><i class="fa fa-edit"></i></span>
+                            </button>
+
+                            <a th:href="@{'person/delete/' + ${person.id}}">
+                                <button type="button" class="btn btn-danger"
+                                        data-bs-toggle="tooltip" data-bs-placement="top" title="Delete">
+                                    <span class="btn-label"><i class="fa fa-trash"></i></span>
+                                </button>
+                            </a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+
+
+            </div>
+            <div class="col-4">col-4</div>
+        </div>
+    </div>
+
+
+</section>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="/js/genres.js"></script>
+
+</body>
+</html>
+<!-- создать у Person доп поле тип Enum
+    как хранят Enum в Hibernate  и Postgresql
+    добавить в шаблон (html person) имя фамилия год рождения
+    добавить пункт выбрать тип деятельности
+  -->

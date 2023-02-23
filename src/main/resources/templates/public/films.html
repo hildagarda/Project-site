@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace ="fragments::html_head">
+
+</head>
+<body>
+
+<header>
+
+    <nav class="navbar navbar-expand-lg bg-success">
+        <div class="container-fluid">
+            <a class="navbar-brand" th:href="@{/}">ABU</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Переключатель навигации">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li>
+                        <a class="nav-link" href="#">Ссылка</a>
+                    </li>
+                    <li>
+                        <a class="nav-link" href="#">Ссылка</a>
+                    </li>
+                    <li>
+                        <a class="nav-link" href="#">Ссылка</a>
+                    </li>
+                </ul>
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Поиск фильма..." aria-label="Поиск">
+                    <button class="btn btn-outline-light" type="submit">Поиск</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+</header>
+
+<section>
+
+    <div class="container text-center">
+        <div class="row">
+            <div class="col">
+                <br>
+                <div class="alert alert-light" role="alert">
+                    <div>
+                        <a class="btn btn-success my-btn" th:href="@{films}" role="button">Фильмы</a>
+                        <a class="btn btn-success my-btn" th:href="@{serials}" role="button">Сериалы</a>
+                        <a class="btn btn-success my-btn" th:href="@{anime}" role="button">Аниме</a>
+                        <a class="btn btn-success my-btn" th:href="@{books}" role="button">Книги</a>
+                    </div>
+                </div>
+
+                <br>
+                <h2> Что такое Фильм? </h2>
+                <p> Фильм (англ. Film — плёнка), кинофильм, телефильм, мультфильм, кинокартина — отдельное произведение
+                    киноискусства.
+                    В технологическом плане, обычно, фильм — это последовательность фотографических изображений
+                    (кадров), связанных единым сюжетом.
+                    Фильм, как правило, включает в себя звуковое сопровождение. </p>
+
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-12">
+                <div class="alert alert-success" role="alert">
+                    Создай свой персональный топ любимых Аниме тайтлов!
+                </div>
+
+            </div>
+
+        </div>
+        <br>
+        <br>
+        <div class="row">
+            <div class="col-8">
+
+
+                <!-- Кнопка-триггер модального окна -->
+                <div class="float-end">
+                    <button type="button" class="btn btn-success" onclick="create()"
+                            data-bs-toggle="tooltip" data-bs-placement="top" title="Add">
+                        <span class="btn-label"><i class="fa fa-plus"></i></span> &nbsp;Add
+                    </button>
+                </div>
+                <!-- Модальное окно -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                     aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+
+                            <!-- ФОРМА СОЗДАНИЯ ФИЛЬМА -->
+                            <form id="uploadFiles" name="uploadFiles" action="/film_table" method="POST"
+                                  enctype="multipart/form-data">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Создай свой персональный рейтинг</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Закрыть"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <!-- id -->
+                                    <input id="id" type="hidden" name="id"/>
+
+                                    <!-- Название -->
+                                    <div class="mb-3">
+                                        <label for="filmName" class="form-label">Название</label>
+                                        <input type="text" name="title" class="form-control" id="filmName"
+                                               aria-describedby="emailHelp">
+                                    </div>
+
+
+
+                                <!--    <div class="form-group">
+                                        <label for="genre" class="form-label">Жанр</label>
+                                        <select class="form-control" id="genre" name="genre" multiple>
+                                            <option th:each="genre : ${genres}"
+                                                    th:value="${genre.id}"
+                                                    th:text="${genre.name}"
+                                            />
+                                        </select>
+                                    </div> -->
+
+
+                                    <!--
+                                    <div class="form-group">
+                                        <label for="producer" class="form-label">Режисер</label>
+                                        <select class="form-control" id="producer" name="person" multiple>
+                                            <option th:each="producer : ${producers}"
+                                                    th:value="${producer.id}"
+                                                    th:text="${producer.name + ' '+ producer.surname + ' (' + producer.typeOfPerson.name + ')'}">
+                                            </option>
+                                        </select>
+                                    </div>
+                                    -->
+
+
+                                    <!-- Год выхода -->
+                                    <div class="mb-3">
+                                        <label for="filmCreated" class="form-label">Год выхода</label>
+                                        <input type="text" name="year" class="form-control" id="filmCreated">
+                                    </div>
+
+                                    <!-- Рейтнг -->
+                                    <div class="mb-3">
+                                        <label for="filmRating" class="form-label">Рейтинг</label>
+                                        <input type="text" name="rating" class="form-control"
+                                               id="filmRating">
+                                    </div>
+
+                                    <!-- Загрузка обложки -->
+                                    <div class="mb-3">
+                                        <label for="filmCover" class="form-label">Обложка</label>
+                                        <input type="file" name="file" class="form-control" id="filmCover"/>
+                                    </div>
+                                    <br>
+
+                                    <!-- Жанр -->
+                                    <div class="dropdown">
+                                        <button  class="btn btn-light dropdown-toggle form-control" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                            Список жанров
+                                        </button>
+                                        <select class="form-control dropdown-menu" id="genre" name="genre" multiple>
+                                            <option th:each="genre : ${genres}"
+                                                    th:value="${genre.id}"
+                                                    th:text="${genre.name}"
+                                            />
+                                        </select>
+                                    </div>
+                                    <br>
+                                    <!-- Режиссер -->
+                                    <div class="dropdown">
+                                        <button  class="btn light dropdown-toggle form-control" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+                                            Список режиссеров
+                                        </button>
+                                        <select class="form-control dropdown-menu" id="producer" name="person" multiple>
+                                            <option th:each="producer : ${producers}"
+                                                    th:value="${producer.id}"
+                                                    th:text="${producer.name + ' '+ producer.surname + ' (' + producer.typeOfPerson.name + ')'}"
+                                            />
+                                        </select>
+                                    </div>
+
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn btn-primary">Сохранить изменения</button>
+                                </div>
+                            </form>
+                            <!-- ОКОНЧАНИЕ ФОРМЫ СОЗДАНИЯ ФИЛЬМА -->
+
+                        </div>
+
+                    </div>
+                </div>
+                <br>
+
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Название</th>
+                        <th scope="col">Жанр</th>
+                        <th scope="col">Создатели/Актеры</th>
+                        <th scope="col">Год выхода</th>
+                        <th scope="col">Рейтинг</th>
+
+                    </tr>
+                    </thead>
+                    <tbody class="table-group-divider">
+                    <tr th:each="film, state : ${filmList}">
+                        <th scope="row" th:text="${state.count}">number</th>
+                        <td th:text="${film.title}">title</td>
+
+                        <td>
+                            <span th:each="genre,iterStat : ${film.genres}"
+                                  th:text="${genre.name} + ${!iterStat.last ? ', ' : ''}">
+
+                        </span>
+                        </td>
+                        <td>
+                            <span th:each="person,iterStat : ${film.persons}"
+                                  th:text="${person.name} + ${!iterStat.last ? ', ' : '' } + ' '+
+                                   ${person.surname} + ${!iterStat.last ? ', ' : '' } + ' ('+
+                                   ${person.typeOfPerson.name} + ${!iterStat.last ? '), ' : ')' }">
+                        </span>
+                        </td>
+
+                        <td th:text="${film.created}">created</td>
+                        <td th:text="${film.rating}">rating</td>
+                        <td class="float-end">
+                            <button type="button" class="btn btn-primary" th:attr="onclick=|edit('${film.id}')|"
+                                    data-bs-toggle="tooltip" data-bs-placement="top" title="Edit">
+                                <span class="btn-label"><i class="fa fa-edit"></i></span>
+                            </button>
+                            <a th:href="@{'film-table/delete/' + ${film.id}}">
+                                <button type="button" class="btn btn-danger"
+                                        data-bs-toggle="tooltip" data-bs-placement="top" title="Delete">
+                                    <span class="btn-label"><i class="fa fa-trash"></i></span>
+                                </button>
+                            </a>
+                        </td>
+
+                    </tr>
+                    </tbody>
+                </table>
+
+
+            </div>
+            <div class="col-4">
+                <div class="card">
+                    <h5 class="card-title mb-2">Фильтр по жанрам</h5>
+                    <div class="card-body">
+                        <!-- перебираем все жанры, что-бы их вывести в фильтр -->
+                        <th:block th:each="genre : ${genres}">
+                            <!-- проверяем, если текущий жанр не выбоарн в фильтре -
+                                                        выводим кнопку для выбора жанра (включение фильтра) -->
+                            <a th:href="@{/films?genre={genreId}(genreId=${genre.id})}"
+                                th:if="${selectedGenre != genre.id}">
+                                <button type="button" class="btn btn-outline-secondary me-2" th:text="${genre.name}"/>
+                            </a>
+                            <!-- проверяем, если текущий жанр уже выбран в фильтре,
+                                выводим кнопку для вывода всех фильмов (сброс фильтра) -->
+                            <a th:href="@{/films?genre}"
+                               th:if="${selectedGenre == genre.id}">
+                                <button type="button" class="btn btn-secondary me-2" th:text="${genre.name}"/>
+                            </a>
+                        </th:block>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+</section>
+
+<div th:replace ="fragments::html_footer"></div>
+
+<div th:replace ="fragments::bootstrap_js"></div>
+<script src="/js/films.js"></script>
+
+</body>
+</html>
